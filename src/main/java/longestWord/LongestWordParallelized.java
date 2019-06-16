@@ -1,5 +1,7 @@
 package longestWord;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
@@ -7,41 +9,64 @@ import org.apache.spark.api.java.JavaSparkContext;
 import scala.Serializable;
 import scala.Tuple2;
 
-import java.io.FileNotFoundException;
+import java.io.File;
+import java.util.Arrays;
 import java.util.Comparator;
-
-import static java.util.Arrays.asList;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class LongestWordParallelized {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         new LongestWordParallelized().findLongestWords();
 
     }
 
     public void findLongestWords() {
 
-        //SparkSession spark = SparkSession.builder().master("spark://192.168.56.1:7077").appName("Test1").getOrCreate();
+        String path = "/home/july/Projects/ProKo/sparkProject/languageFiles/";
+        Logger.getLogger("org.apache").setLevel(Level.WARN);
+
         SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("TestNew");
         JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
 
 
-        JavaRDD<String> textPerLanguage = sparkContext.textFile("/home/july/Projects/ProKo/sparkProject/languageFiles/English/*/*.txt");
-        JavaRDD<String> newRdd = textPerLanguage.flatMap(content -> asList(content.split("(\\s|=|»|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+")).iterator());
+        String[] directories = new File(path).list();
+        Map<String, JavaRDD<String>> textPerLanguage = Arrays.asList(directories).stream().collect(
+                Collectors.toMap(language -> language, language -> sparkContext.textFile(path + language + "/*/*.txt")));
 
-        JavaPairRDD<Integer, Iterable<String>> counts =   newRdd.distinct().mapToPair(t -> new Tuple2(t.length(),t));
+        Map<String, JavaRDD<String>> wordsPerLanguage = textPerLanguage.entrySet().stream().collect(Collectors.toMap(
+                textLanguageTuple -> textLanguageTuple.getKey(),
+                textLanguageTuple -> textLanguageTuple.getValue().flatMap(content -> Arrays.asList(content.split("(\\s|=|»|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+")).iterator())));
 
-        for( Object line:counts.collect()){
+        Map <String, JavaPairRDD<Integer, Iterable<String>>> countedWordsPerLanguage =   wordsPerLanguage.entrySet().stream().collect(Collectors.toMap(
+                wordsTuple -> wordsTuple.getKey(),
+                wordsTuple -> wordsTuple.getValue().distinct().mapToPair(t -> new Tuple2(t.length(),t))));
+
+
+        //JavaRDD<String> textPerLanguage = sparkContext.textFile("/home/july/Projects/ProKo/sparkProject/languageFiles/English/*/*.txt");
+        //JavaRDD<String> newRdd = textPerLanguage.flatMap(content -> asList(content.split("(\\s|=|»|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+")).iterator());
+
+        //JavaPairRDD<Integer, Iterable<String>> counts =   newRdd.distinct().mapToPair(t -> new Tuple2(t.length(),t));
+
+        /*for( Object line:counts.collect()){
             System.out.println("* "+line);
-        }
+        }*/
 
-        Tuple2<Integer, Iterable<String>> withMaxKeys = counts.max(new TupleComparator());
+        Map <String, Tuple2<Integer, Iterable<String>>> withMaxKeys = countedWordsPerLanguage.entrySet().stream().collect(Collectors.toMap(
+                language -> language.getKey(),
+                language -> language.getValue().max(new TupleComparator())));
 
         // String maxKeys = counts.keys().max (Comparator.comparingInt(y -> Integer.parseInt(y)));
 
         // JavaPairRDD<String, Integer> withMaxKeys = counts.filter (y -> y._2.equals(maxKeys));
 
-        System.out.println("Längstes Wort:" + withMaxKeys._2 + " Länge: " + withMaxKeys._1 );
+        withMaxKeys.entrySet().forEach(language -> {
+            Tuple2 wordWithCount = language.getValue();
+            System.out.println("Sprache:" + language.getKey() +  " Längstes Wort:" + wordWithCount._2 + " Länge: " + wordWithCount._1 );
+        });
+
+
 
 
 
