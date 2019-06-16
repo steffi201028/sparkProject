@@ -4,9 +4,9 @@ import java.io.*;
 import java.util.Scanner;
 
 
-public class App {
+public class LongestWordUnparallelized {
     public static void main(String[] args) throws FileNotFoundException {
-        new App().findLongestWords();
+        new LongestWordUnparallelized().findLongestWords();
 
     }
 
@@ -14,8 +14,6 @@ public class App {
 
         String idStr = "";
         String longest_word = "";
-        String path = "";
-
         File[] directories = new File("C:/Users/Stephanie/Documents/AI_Master/ProgrammAlgo/longestWord/languageFiles").listFiles(File::isDirectory);
 
 
