@@ -13,21 +13,25 @@ import java.util.Arrays;
 
 public class LongestWordParallelizedReduce implements LongestWord {
 
-    public static final String path = "/home/july/Projects/ProKo/sparkProject/languageFiles/";
-
-    public JavaSparkContext sparkContext;
-
-    public LongestWordParallelizedReduce(){
-        SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("LongestWordsSingle").set("spark.driver.allowMultipleContexts", "true");
-        JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
-        this.sparkContext = sparkContext;
-    }
-
     public static void main(String[] args) {
         Logger.getLogger("org.apache").setLevel(Level.WARN);
 
         new LongestWordParallelizedReduce().findLongestWords();
 
+    }
+
+    public static final String path = "/home/july/Projects/ProKo/sparkProject/languageFiles/";
+
+    public JavaSparkContext sparkContext;
+
+    public LongestWordParallelizedReduce(){
+        SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("LongestWordsReduce").set("spark.driver.allowMultipleContexts", "true");
+        JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
+        this.sparkContext = sparkContext;
+    }
+
+    public LongestWordParallelizedReduce (JavaSparkContext sparkContext){
+        this.sparkContext = sparkContext;
     }
 
     public void findLongestWords(){
@@ -36,7 +40,6 @@ public class LongestWordParallelizedReduce implements LongestWord {
         for (int i = 0; i<directories.length; i++){
             findLongestWord(directories[i]);
         }
-        sparkContext.stop();
     }
 
     public void findLongestWord(String language) {

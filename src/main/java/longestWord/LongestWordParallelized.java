@@ -16,21 +16,25 @@ import java.util.stream.Collectors;
 
 public class LongestWordParallelized implements LongestWord {
 
-    public static final String path = "/home/july/Projects/ProKo/sparkProject/languageFiles/";
-
-    public JavaSparkContext sparkContext;
-
-    public LongestWordParallelized (){
-        SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("LongestWordsSingle").set("spark.driver.allowMultipleContexts", "true");;
-        JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
-        this.sparkContext = sparkContext;
-    }
-
     public static void main(String[] args) {
         Logger.getLogger("org.apache").setLevel(Level.WARN);
 
         new LongestWordParallelized().findLongestWords();
 
+    }
+
+    public static final String path = "/home/july/Projects/ProKo/sparkProject/languageFiles/";
+
+    public JavaSparkContext sparkContext;
+
+    public LongestWordParallelized (){
+        SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("LongestWordsMax").set("spark.driver.allowMultipleContexts", "true");;
+        JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
+        this.sparkContext = sparkContext;
+    }
+
+    public LongestWordParallelized (JavaSparkContext sparkContext){
+        this.sparkContext = sparkContext;
     }
 
     public void findLongestWords() {
@@ -41,7 +45,6 @@ public class LongestWordParallelized implements LongestWord {
         Map <String, Tuple2<Integer, Iterable<String>>> maxWordsPerLanguage = getMaxWordsTupleComparator(directories);
         printLongestWordsWithLanguages(maxWordsPerLanguage.entrySet());
 
-        sparkContext.stop();
     }
 
     private Map <String, Tuple2<Integer, Iterable<String>>> getMaxWordsTupleComparator( String[] directories){
