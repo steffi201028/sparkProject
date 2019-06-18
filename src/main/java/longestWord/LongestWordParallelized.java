@@ -14,9 +14,17 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class LongestWordParallelized {
+public class LongestWordParallelized implements LongestWord {
 
     public static final String path = "/home/july/Projects/ProKo/sparkProject/languageFiles/";
+
+    public JavaSparkContext sparkContext;
+
+    public LongestWordParallelized (){
+        SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("LongestWordsSingle").set("spark.driver.allowMultipleContexts", "true");;
+        JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
+        this.sparkContext = sparkContext;
+    }
 
     public static void main(String[] args) {
         Logger.getLogger("org.apache").setLevel(Level.WARN);
@@ -29,17 +37,14 @@ public class LongestWordParallelized {
 
         String[] directories = new File(path).list();
 
-
         //getMaxWordsReduce(directories);
         Map <String, Tuple2<Integer, Iterable<String>>> maxWordsPerLanguage = getMaxWordsTupleComparator(directories);
         printLongestWordsWithLanguages(maxWordsPerLanguage.entrySet());
 
-
+        sparkContext.stop();
     }
 
     private Map <String, Tuple2<Integer, Iterable<String>>> getMaxWordsTupleComparator( String[] directories){
-        SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("TestNew");
-        JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
 
         Map<String, JavaRDD<String>> textPerLanguage = Arrays.asList(directories)
                 .stream().collect(Collectors.toMap(
@@ -49,7 +54,7 @@ public class LongestWordParallelized {
         Map<String, JavaRDD<String>> wordsPerLanguage = textPerLanguage
                 .entrySet().stream().collect(Collectors.toMap(
                         textLanguageTuple -> textLanguageTuple.getKey(),
-                        textLanguageTuple -> textLanguageTuple.getValue().flatMap(content -> Arrays.asList(content.split("(\\s|=|»|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+")).iterator())));
+                        textLanguageTuple -> textLanguageTuple.getValue().flatMap(content -> Arrays.asList(content.split("(\\s|[...]|=|»|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+")).iterator())));
 
         Map <String, JavaPairRDD<Integer, Iterable<String>>> countedWordsPerLanguage =   wordsPerLanguage
                 .entrySet().stream().collect(Collectors.toMap(
@@ -65,20 +70,27 @@ public class LongestWordParallelized {
         return withMaxKeys;
     }
 
-    private void getMaxWordsReduce(String[] directories){
+    private void printLongestWordsWithLanguages(Set<Map.Entry<String, Tuple2 <Integer,Iterable<String>>>> entrySet){
+        entrySet.forEach(language -> {
+            Tuple2 wordWithCount = language.getValue();
+            System.out.println("Sprache:" + language.getKey() +  " Längstes Wort:" + wordWithCount._2 + " Länge: " + wordWithCount._1 );
+        });
+    }
 
-        SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("TestNew");
+    /*private void getMaxWordsReduce(String[] directories){
+
+        SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("LongestWordsReduce");
         JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
 
         Map<String, JavaRDD<String>> textPerLanguage = Arrays.asList(directories)
                 .stream().collect(Collectors.toMap(
                         language -> language,
-                        language -> sparkContext.textFile(path + language + "/*/*.txt")));
+                        language -> sparkContext.textFile(path + language + "/*//*.txt")));
 
         Map<String, JavaRDD<String>> wordsPerLanguage = textPerLanguage
                 .entrySet().stream().collect(Collectors.toMap(
                         textLanguageTuple -> textLanguageTuple.getKey(),
-                        textLanguageTuple -> textLanguageTuple.getValue().flatMap(content -> Arrays.asList(content.split("(\\s|=|»|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+")).iterator())));
+                        textLanguageTuple -> textLanguageTuple.getValue().flatMap(content -> Arrays.asList(content.split(" ")).iterator())));
 
         Map <String, Tuple2<String, Integer>> countedWordsPerLanguage =   wordsPerLanguage
                 .entrySet().stream().collect(Collectors.toMap(
@@ -109,13 +121,5 @@ public class LongestWordParallelized {
             return word1;
         }
         return word2;
-    }
-
-
-    private void printLongestWordsWithLanguages(Set<Map.Entry<String, Tuple2 <Integer,Iterable<String>>>> entrySet){
-        entrySet.forEach(language -> {
-            Tuple2 wordWithCount = language.getValue();
-            System.out.println("Sprache:" + language.getKey() +  " Längstes Wort:" + wordWithCount._2 + " Länge: " + wordWithCount._1 );
-        });
-    }
+    }*/
 }

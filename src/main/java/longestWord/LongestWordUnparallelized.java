@@ -4,23 +4,26 @@ import java.io.*;
 import java.util.Scanner;
 
 
-public class LongestWordUnparallelized {
-    public static void main(String[] args) throws FileNotFoundException {
+public class LongestWordUnparallelized implements LongestWord{
+
+    public static final String path = "/home/july/Projects/ProKo/sparkProject/languageFiles/";
+
+    public static void main(String[] args) {
         new LongestWordUnparallelized().findLongestWords();
 
     }
 
-    public void findLongestWords() throws FileNotFoundException {
+    public void findLongestWords() {
 
         String idStr = "";
         String longest_word = "";
-        File[] directories = new File("C:/Users/Stephanie/Documents/AI_Master/ProgrammAlgo/longestWord/languageFiles").listFiles(File::isDirectory);
+        File[] directories = new File(path).listFiles(File::isDirectory);
 
 
         for (int i = 0; i < directories.length; i++) {
             idStr = new File(directories[i].getPath()).getName();
             //System.out.println("Sprache: " + idStr);
-            String textFilespath = "C:/Users/Stephanie/Documents/AI_Master/ProgrammAlgo/longestWord/languageFiles/" + idStr + "/TXT";
+            String textFilespath = path + idStr + "/TXT";
             // System.out.println(textFilespath);
             File[] filesPerLanguage = new File(textFilespath).listFiles(File::isFile);
             longest_word = "";
