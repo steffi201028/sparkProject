@@ -17,7 +17,10 @@ public class TimeTest {
         LongestWord[] longestWords = new LongestWord[]{
                 new LongestWordParallelized(sparkContext),
                 new LongestWordParallelizedReduce(sparkContext),
+                new LongestWordParallelizedTupleComparator(sparkContext),
                 new LongestWordUnparallelized()};
+
+        System.out.println("Test running...");
 
         long[] times = new long[longestWords.length];
         for(int i = 0; i < longestWords.length; i++){
@@ -30,9 +33,6 @@ public class TimeTest {
             long duration = (endTime - startTime);
 
             times[i] = duration;
-            System.out.println("-------------------------------------------------------------------------------");
-            System.out.println(longestWords[i].getClass() + ": " + duration);
-            System.out.println("-------------------------------------------------------------------------------");
         }
         for(int i = 0; i < times.length; i++){
             System.out.println("-------------------------------------------------------------------------------");
