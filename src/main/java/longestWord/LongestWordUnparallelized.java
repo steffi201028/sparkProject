@@ -43,7 +43,7 @@ public class LongestWordUnparallelized implements LongestWord{
                 // System.out.println(path);
                 Scanner sc = new Scanner(sb);
                 // sc.useDelimiter("-|«| |\n");
-                sc.useDelimiter("(\\s|=|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+");
+                sc.useDelimiter("(\\s|[^\\p{L}]|=|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+");
                 //sc.useDelimiter("[-«,!?.]+");
 
                 while (sc.hasNext()) {
@@ -60,9 +60,8 @@ public class LongestWordUnparallelized implements LongestWord{
             }
 
             System.out.print(idStr);
-            System.out.print("-- " + longest_word);
-            System.out.println("-- " + longest_word.length());
-            System.out.println();
+            System.out.print("- " + longest_word);
+            System.out.println("- " + longest_word.length());
 
             //return longest_word;
 
