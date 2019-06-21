@@ -50,20 +50,24 @@ public class LongestWordParallelizedTupleComparator implements LongestWord {
 
             String language = directories[i];
 
-            Tuple2<Integer, Iterable<String>> maxWord = getLongestWordOfLanguage(language);
+            Tuple2<Integer, Iterable<String>> maxWord = getLongestWordOfLanguage(path + language);
 
-            maxWordsPerLanguage.add(new Tuple2(maxWord._1(), new Tuple2<>(language, String.valueOf(maxWord._2()))));
-
+            if(maxWord != null){
+                maxWordsPerLanguage.add(new Tuple2(maxWord._1(), new Tuple2<>(language, String.valueOf(maxWord._2()))));
+            }
         }
 
         return sparkContext.parallelizePairs(maxWordsPerLanguage).sortByKey(false);
 
     }
 
-    private Tuple2<Integer, Iterable<String>> getLongestWordOfLanguage(String language){
+    private Tuple2<Integer, Iterable<String>> getLongestWordOfLanguage(String pathToLanguageFiles){
 
+        if( new File(pathToLanguageFiles + "/TXT/").listFiles(File::isFile).length < 1){
+            return null;
+        }
         JavaRDD<String> wordsFromText = sparkContext
-                .textFile(path + language + "/*/*.txt")
+                .textFile(pathToLanguageFiles + "/*/*.txt")
                 .flatMap(content -> Arrays.asList(content.split("(\\s|[^\\p{L}]|=|»|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+")).iterator());
 
 

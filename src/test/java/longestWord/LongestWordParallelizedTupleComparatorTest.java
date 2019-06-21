@@ -30,6 +30,7 @@ public class LongestWordParallelizedTupleComparatorTest
     public static String[] directoriesMultipleLanguagesMultipleText;
     public static String directoriesOneLanguageOneText;
     public static String directoriesOneLanguageMultipleText;
+    public static String directoriesOneLanguageNoText;
     public static String LONGEST_WORD;
 
     @BeforeAll
@@ -48,10 +49,12 @@ public class LongestWordParallelizedTupleComparatorTest
 
         directoriesOneLanguageOneText = "languageOneText";
         directoriesOneLanguageMultipleText = "languageMultipleTexts";
+        directoriesOneLanguageNoText = "languageNoTexts";
         directoriesMultipleLanguagesMultipleText = new String[]{directoriesOneLanguageOneText, directoriesOneLanguageMultipleText};
 
         new File(path + directoriesOneLanguageOneText + "/TXT/").mkdirs();
         new File(path + directoriesOneLanguageMultipleText + "/TXT/").mkdirs();
+        new File(path + directoriesOneLanguageNoText + "/TXT/").mkdirs();
 
         FileWriter writer1 = new FileWriter(path + directoriesOneLanguageOneText + "/TXT/text1.txt");
         writer1.write("word&% ? #' \"word\" ... word word wooooord " + LONGEST_WORD + " other words");
@@ -62,9 +65,13 @@ public class LongestWordParallelizedTupleComparatorTest
         FileWriter writer3 = new FileWriter(path + directoriesOneLanguageMultipleText + "/TXT/text3.txt");
         writer3.write("word word word word wooooord " + LONGEST_WORD + " other words " + "...." + LONGEST_WORD);
 
+        FileWriter writer4 = new FileWriter(path + directoriesOneLanguageMultipleText + "/TXT/text4.txt");
+        writer3.write("");
+
         writer1.close();
         writer2.close();
         writer3.close();
+        writer4.close();
     }
 
     @AfterAll
@@ -77,6 +84,20 @@ public class LongestWordParallelizedTupleComparatorTest
     public void testGetLongestWordsSorted_noLanguages()
     {
         JavaPairRDD longestWordsSorted = longestWordFinder.getLongestWordsSorted(path, new String[0]);
+        assertEquals(true, longestWordsSorted.isEmpty(),  "Collection of found longest words should be empty.");
+    }
+
+    @Test
+    public void testGetLongestWordsSorted_noTextInLanguage()
+    {
+        JavaPairRDD longestWordsSorted = longestWordFinder.getLongestWordsSorted(path, new String[]{directoriesOneLanguageNoText});
+        assertEquals(true, longestWordsSorted.isEmpty(),  "Collection of found longest words should be empty.");
+    }
+
+    @Test
+    public void testGetLongestWordsSorted_emptyTextInLanguage()
+    {
+        JavaPairRDD longestWordsSorted = longestWordFinder.getLongestWordsSorted(path, new String[]{directoriesOneLanguageNoText});
         assertEquals(true, longestWordsSorted.isEmpty(),  "Collection of found longest words should be empty.");
     }
 
