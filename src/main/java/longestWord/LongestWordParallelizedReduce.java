@@ -27,38 +27,50 @@ public class LongestWordParallelizedReduce implements LongestWord {
     public JavaSparkContext sparkContext;
 
     public LongestWordParallelizedReduce(){
-        SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("LongestWordsReduce").set("spark.driver.allowMultipleContexts", "true");
+        SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("LongestWordsReduce");
         JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
         this.sparkContext = sparkContext;
     }
 
     public LongestWordParallelizedReduce (JavaSparkContext sparkContext){
+
         this.sparkContext = sparkContext;
     }
 
     public void findLongestWords(){
         String[] directories = new File(path).list();
 
+        JavaPairRDD maxWordsSorted = getLongestWordsSorted(path, directories);
+
+        printLongestWordsWithLanguages(maxWordsSorted);
+    }
+
+    public JavaPairRDD getLongestWordsSorted(String pathToLanguages, String[] directories){
         List<Tuple2<Integer, Tuple2<String, String>>> maxWordsPerLanguage = new ArrayList<>();
 
         for (int i = 0; i<directories.length; i++){
 
             String language = directories[i];
 
-            JavaRDD<String> languageText = sparkContext.textFile(path + language + "/*/*.txt");
+            Tuple2<Integer, Iterable<String>> maxWord = getLongestWordOfLanguage(pathToLanguages + language);
 
-            JavaRDD<String> words= languageText.flatMap(content -> Arrays.asList(content.split("(\\s|[^\\p{L}]|=|»|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+")).iterator());
-
-            JavaPairRDD<Integer, Iterable<String>> countedWords =   words.distinct().mapToPair(t -> new Tuple2(t.length(),t));
-
-            Tuple2<Integer, Iterable<String>> maxWord = countedWords.reduce((t1, t2) -> { if(t1._1 > t2._1){return t1;}else{ return t2;}});
             maxWordsPerLanguage.add(new Tuple2(maxWord._1(), new Tuple2<>(language, String.valueOf(maxWord._2()))));
 
         }
 
-        JavaPairRDD maxWordsSorted = sparkContext.parallelizePairs(maxWordsPerLanguage).sortByKey(false);
+        return sparkContext.parallelizePairs(maxWordsPerLanguage).sortByKey(false);
 
-        printLongestWordsWithLanguages(maxWordsSorted);
+    }
+
+    private Tuple2<Integer, Iterable<String>> getLongestWordOfLanguage(String pathToLanguageFiles){
+
+        JavaRDD<String> languageText = sparkContext.textFile(pathToLanguageFiles + "/*/*.txt");
+
+        JavaRDD<String> words= languageText.flatMap(content -> Arrays.asList(content.split("(\\s|[^\\p{L}]|=|»|—|\\.|@|,|:|;|!|-|\\?|'|\\\")+")).iterator());
+
+        JavaPairRDD<Integer, Iterable<String>> countedWords =   words.distinct().mapToPair(t -> new Tuple2(t.length(),t));
+
+        return countedWords.reduce((t1, t2) -> { if(t1._1 > t2._1){return t1;}else{ return t2;}});
     }
 
     private void printLongestWordsWithLanguages(JavaPairRDD<Integer, Tuple2<String, String>>  longestWords){
