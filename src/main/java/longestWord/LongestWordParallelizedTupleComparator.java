@@ -38,19 +38,19 @@ public class LongestWordParallelizedTupleComparator implements LongestWord {
     public void findLongestWords(){
         String[] directories = new File(path).list();
 
-        JavaPairRDD maxWordsSorted = getLongestWordsSorted(directories);
+        JavaPairRDD maxWordsSorted = getLongestWordsSorted(path, directories);
 
         printLongestWordsWithLanguages(maxWordsSorted);
     }
 
-    private JavaPairRDD getLongestWordsSorted(String[] directories){
+    public JavaPairRDD getLongestWordsSorted(String pathToLanguages, String[] directories){
         List<Tuple2<Integer, Tuple2<String, String>>> maxWordsPerLanguage = new ArrayList<>();
 
         for (int i = 0; i<directories.length; i++){
 
             String language = directories[i];
 
-            Tuple2<Integer, Iterable<String>> maxWord = getLongestWordOfLanguage(path + language);
+            Tuple2<Integer, Iterable<String>> maxWord = getLongestWordOfLanguage(pathToLanguages + language);
 
             if(maxWord != null){
                 maxWordsPerLanguage.add(new Tuple2(maxWord._1(), new Tuple2<>(language, String.valueOf(maxWord._2()))));

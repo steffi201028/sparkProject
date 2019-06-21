@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class LongestWordParallelizedTupleComparatorTest
 {
 
-    public static LongestWordParallelizedReduce longestWordFinder;
+    public static LongestWordParallelizedTupleComparator longestWordFinder;
     public static String path;
     public static String[] directoriesMultipleLanguagesMultipleText;
     public static String directoriesOneLanguageOneText;
@@ -41,7 +41,7 @@ public class LongestWordParallelizedTupleComparatorTest
         SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("LongestWordsTimeTest");
         JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
 
-        longestWordFinder = new LongestWordParallelizedReduce(sparkContext);
+        longestWordFinder = new LongestWordParallelizedTupleComparator(sparkContext);
 
         LONGEST_WORD = "loooooooooooooooooongestWord";
 
