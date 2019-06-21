@@ -1,7 +1,9 @@
 package longestWord;
 
+import scala.Tuple2;
+
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class LongestWordUnparallelized implements LongestWord{
@@ -14,17 +16,23 @@ public class LongestWordUnparallelized implements LongestWord{
     }
 
     public void findLongestWords() {
+        File[] directories = new File(path).listFiles(File::isDirectory);
+
+        Map<Integer, Tuple2<String, String>> longestWords = getLongestWordsSorted(path, directories);
+
+        printLongestWordsWithLanguages(longestWords);
+    }
+
+    public NavigableMap<Integer, Tuple2<String, String>> getLongestWordsSorted(String pathToLanguageFiles, File[] directories){
 
         String idStr = "";
         String longest_word = "";
-        File[] directories = new File(path).listFiles(File::isDirectory);
-
+        TreeMap<Integer, Tuple2<String, String>> longestWordsPerLanguage = new TreeMap<>();
 
         for (int i = 0; i < directories.length; i++) {
             idStr = new File(directories[i].getPath()).getName();
             //System.out.println("Sprache: " + idStr);
-            String textFilespath = path + idStr + "/TXT";
-            // System.out.println(textFilespath);
+            String textFilespath = pathToLanguageFiles + idStr + "/TXT";
             File[] filesPerLanguage = new File(textFilespath).listFiles(File::isFile);
             longest_word = "";
             for (int j = 0; j < filesPerLanguage.length; j++) {
@@ -59,14 +67,17 @@ public class LongestWordUnparallelized implements LongestWord{
 
             }
 
-            System.out.print(idStr);
-            System.out.print("- " + longest_word);
-            System.out.println("- " + longest_word.length());
-
-            //return longest_word;
-
+            longestWordsPerLanguage.put(longest_word.length(), new Tuple2<>(idStr, longest_word));
         }
 
+        return longestWordsPerLanguage.descendingMap();
+
+    }
+
+    private void printLongestWordsWithLanguages(Map<Integer, Tuple2<String, String>>  longestWords){
+        for(Map.Entry<Integer, Tuple2<String, String>> entry : longestWords.entrySet()) {
+            System.out.println(entry.getValue()._1 + " - " + entry.getValue()._2 + " - " + entry.getKey());
+        }
     }
 
     public static String getFileContent(File file) throws IOException {
@@ -86,17 +97,4 @@ public class LongestWordUnparallelized implements LongestWord{
         }
         return sb.toString();
     }
-
-/*    public void gettest(){
-        SparkConf conf = new SparkConf().setAppName("WordCount").setMaster("spark://192.168.56.1:7077");
-         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<String> textFile = sc.textFile("C:\\Users\\Stephanie\\spark\\spark-2.4.2-bin-hadoop2.7\\README.md");
-        JavaPairRDD<String, Integer> counts = textFile
-                .flatMap(s -> Arrays.asList(s.split(" ")).iterator())
-                .mapToPair(word -> new Tuple2<>(word, 1))
-                .reduceByKey((a, b) -> a + b );
-        //System.out.println("Hallo");
-        counts.saveAsTextFile("C:\\Users\\Stephanie\\spark\\spark-2.4.2-bin-hadoop2.7\\results.txt");
-
-    }*/
 }
