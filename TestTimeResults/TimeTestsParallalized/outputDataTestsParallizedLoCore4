@@ -1,0 +1,168 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/C:/Users/Stephanie/.m2/repository/org/apache/spark/spark-unsafe_2.12/2.4.2/spark-unsafe_2.12-2.4.2.jar) to method java.nio.Bits.unaligned()
+WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+19/06/24 02:24:34 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Test running...
+Sprache:Deutsch Längstes Wort:eindusendsöbenhunnertuneiunsösstig Länge: 34
+Sprache:English Längstes Wort:Mekkamuselmannenmassenmenchenmoerdermohrenmuttermarmormonumentenmacher Länge: 70
+Sprache:??????? Längstes Wort:????????????????????????? Länge: 25
+Sprache:Francais Längstes Wort:constitutionnellement Länge: 21
+Sprache:?????????? Längstes Wort:???????????????????? Länge: 20
+Sprache:Nederlands Längstes Wort:landbouwgereedschappen Länge: 22
+Sprache:Italiano Längstes Wort:quattrocentoquarantatremila Länge: 27
+Sprache:Espanol Längstes Wort:circunstanciadamente Länge: 20
+Dauer von Durchlauf 1:60
+Durchlauf1:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 60.264914903 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 1 ist 60.264914903
+
+Test running...
+Sprache:Deutsch Längstes Wort:eindusendsöbenhunnertuneiunsösstig Länge: 34
+Sprache:English Längstes Wort:Mekkamuselmannenmassenmenchenmoerdermohrenmuttermarmormonumentenmacher Länge: 70
+Sprache:??????? Längstes Wort:????????????????????????? Länge: 25
+Sprache:Francais Längstes Wort:constitutionnellement Länge: 21
+Sprache:?????????? Längstes Wort:???????????????????? Länge: 20
+Sprache:Nederlands Längstes Wort:landbouwgereedschappen Länge: 22
+Sprache:Italiano Längstes Wort:quattrocentoquarantatremila Länge: 27
+Sprache:Espanol Längstes Wort:circunstanciadamente Länge: 20
+Dauer von Durchlauf 2:48
+Durchlauf2:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 48.180881343 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 2 ist 108.445796246
+
+Test running...
+Sprache:Deutsch Längstes Wort:eindusendsöbenhunnertuneiunsösstig Länge: 34
+Sprache:English Längstes Wort:Mekkamuselmannenmassenmenchenmoerdermohrenmuttermarmormonumentenmacher Länge: 70
+Sprache:??????? Längstes Wort:????????????????????????? Länge: 25
+Sprache:Francais Längstes Wort:constitutionnellement Länge: 21
+Sprache:?????????? Längstes Wort:???????????????????? Länge: 20
+Sprache:Nederlands Längstes Wort:landbouwgereedschappen Länge: 22
+Sprache:Italiano Längstes Wort:quattrocentoquarantatremila Länge: 27
+Sprache:Espanol Längstes Wort:circunstanciadamente Länge: 20
+Dauer von Durchlauf 3:49
+Durchlauf3:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 49.677314009 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 3 ist 158.123110255
+
+Test running...
+Sprache:Deutsch Längstes Wort:eindusendsöbenhunnertuneiunsösstig Länge: 34
+Sprache:English Längstes Wort:Mekkamuselmannenmassenmenchenmoerdermohrenmuttermarmormonumentenmacher Länge: 70
+Sprache:??????? Längstes Wort:????????????????????????? Länge: 25
+Sprache:Francais Längstes Wort:constitutionnellement Länge: 21
+Sprache:?????????? Längstes Wort:???????????????????? Länge: 20
+Sprache:Nederlands Längstes Wort:landbouwgereedschappen Länge: 22
+Sprache:Italiano Längstes Wort:quattrocentoquarantatremila Länge: 27
+Sprache:Espanol Längstes Wort:circunstanciadamente Länge: 20
+Dauer von Durchlauf 4:47
+Durchlauf4:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 47.681026202 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 4 ist 205.804136457
+
+Test running...
+Sprache:Deutsch Längstes Wort:eindusendsöbenhunnertuneiunsösstig Länge: 34
+Sprache:English Längstes Wort:Mekkamuselmannenmassenmenchenmoerdermohrenmuttermarmormonumentenmacher Länge: 70
+Sprache:??????? Längstes Wort:????????????????????????? Länge: 25
+Sprache:Francais Längstes Wort:constitutionnellement Länge: 21
+Sprache:?????????? Längstes Wort:???????????????????? Länge: 20
+Sprache:Nederlands Längstes Wort:landbouwgereedschappen Länge: 22
+Sprache:Italiano Längstes Wort:quattrocentoquarantatremila Länge: 27
+Sprache:Espanol Längstes Wort:circunstanciadamente Länge: 20
+Dauer von Durchlauf 5:46
+Durchlauf5:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 46.840518 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 5 ist 252.644654457
+
+Test running...
+Sprache:Deutsch Längstes Wort:eindusendsöbenhunnertuneiunsösstig Länge: 34
+Sprache:English Längstes Wort:Mekkamuselmannenmassenmenchenmoerdermohrenmuttermarmormonumentenmacher Länge: 70
+Sprache:??????? Längstes Wort:????????????????????????? Länge: 25
+Sprache:Francais Längstes Wort:constitutionnellement Länge: 21
+Sprache:?????????? Längstes Wort:???????????????????? Länge: 20
+Sprache:Nederlands Längstes Wort:landbouwgereedschappen Länge: 22
+Sprache:Italiano Längstes Wort:quattrocentoquarantatremila Länge: 27
+Sprache:Espanol Längstes Wort:circunstanciadamente Länge: 20
+Dauer von Durchlauf 6:48
+Durchlauf6:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 48.275429594 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 6 ist 300.920084051
+
+Test running...
+Sprache:Deutsch Längstes Wort:eindusendsöbenhunnertuneiunsösstig Länge: 34
+Sprache:English Längstes Wort:Mekkamuselmannenmassenmenchenmoerdermohrenmuttermarmormonumentenmacher Länge: 70
+Sprache:??????? Längstes Wort:????????????????????????? Länge: 25
+Sprache:Francais Längstes Wort:constitutionnellement Länge: 21
+Sprache:?????????? Längstes Wort:???????????????????? Länge: 20
+Sprache:Nederlands Längstes Wort:landbouwgereedschappen Länge: 22
+Sprache:Italiano Längstes Wort:quattrocentoquarantatremila Länge: 27
+Sprache:Espanol Längstes Wort:circunstanciadamente Länge: 20
+Dauer von Durchlauf 7:52
+Durchlauf7:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 52.072597467 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 7 ist 352.992681518
+
+Test running...
+Sprache:Deutsch Längstes Wort:eindusendsöbenhunnertuneiunsösstig Länge: 34
+Sprache:English Längstes Wort:Mekkamuselmannenmassenmenchenmoerdermohrenmuttermarmormonumentenmacher Länge: 70
+Sprache:??????? Längstes Wort:????????????????????????? Länge: 25
+Sprache:Francais Längstes Wort:constitutionnellement Länge: 21
+Sprache:?????????? Längstes Wort:???????????????????? Länge: 20
+Sprache:Nederlands Längstes Wort:landbouwgereedschappen Länge: 22
+Sprache:Italiano Längstes Wort:quattrocentoquarantatremila Länge: 27
+Sprache:Espanol Längstes Wort:circunstanciadamente Länge: 20
+Dauer von Durchlauf 8:49
+Durchlauf8:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 49.489990329 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 8 ist 402.482671847
+
+Test running...
+Sprache:Deutsch Längstes Wort:eindusendsöbenhunnertuneiunsösstig Länge: 34
+Sprache:English Längstes Wort:Mekkamuselmannenmassenmenchenmoerdermohrenmuttermarmormonumentenmacher Länge: 70
+Sprache:??????? Längstes Wort:????????????????????????? Länge: 25
+Sprache:Francais Längstes Wort:constitutionnellement Länge: 21
+Sprache:?????????? Längstes Wort:???????????????????? Länge: 20
+Sprache:Nederlands Längstes Wort:landbouwgereedschappen Länge: 22
+Sprache:Italiano Längstes Wort:quattrocentoquarantatremila Länge: 27
+Sprache:Espanol Längstes Wort:circunstanciadamente Länge: 20
+Dauer von Durchlauf 9:48
+Durchlauf9:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 48.726591888 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 9 ist 451.209263735
+
+Test running...
+Sprache:Deutsch Längstes Wort:eindusendsöbenhunnertuneiunsösstig Länge: 34
+Sprache:English Längstes Wort:Mekkamuselmannenmassenmenchenmoerdermohrenmuttermarmormonumentenmacher Länge: 70
+Sprache:??????? Längstes Wort:????????????????????????? Länge: 25
+Sprache:Francais Längstes Wort:constitutionnellement Länge: 21
+Sprache:?????????? Längstes Wort:???????????????????? Länge: 20
+Sprache:Nederlands Längstes Wort:landbouwgereedschappen Länge: 22
+Sprache:Italiano Längstes Wort:quattrocentoquarantatremila Länge: 27
+Sprache:Espanol Längstes Wort:circunstanciadamente Länge: 20
+Dauer von Durchlauf 10:48
+Durchlauf10:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 48.344724949 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 10 ist 499.553988684
+
+Average Duration is 49.955398868399996

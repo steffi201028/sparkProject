@@ -1,0 +1,80 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/C:/Users/Stephanie/.m2/repository/org/apache/spark/spark-unsafe_2.12/2.4.2/spark-unsafe_2.12-2.4.2.jar) to method java.nio.Bits.unaligned()
+WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+19/06/24 22:30:28 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Test running...
+Durchlauf1:
+-------------------------------------------------------------------------------
+Dauer von Durchlauf 1: 65.692483754 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 1 ist 65.692483754
+
+Test running...
+Durchlauf2:
+-------------------------------------------------------------------------------
+Dauer von Durchlauf 2: 54.701521406 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 2 ist 120.39400516
+
+Test running...
+Durchlauf3:
+-------------------------------------------------------------------------------
+Dauer von Durchlauf 3: 58.557998989 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 3 ist 178.952004149
+
+Test running...
+Durchlauf4:
+-------------------------------------------------------------------------------
+Dauer von Durchlauf 4: 53.586402839 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 4 ist 232.538406988
+
+Test running...
+Durchlauf5:
+-------------------------------------------------------------------------------
+Dauer von Durchlauf 5: 55.815331818 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 5 ist 288.353738806
+
+Test running...
+Durchlauf6:
+-------------------------------------------------------------------------------
+Dauer von Durchlauf 6: 59.078676375 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 6 ist 347.432415181
+
+Test running...
+Durchlauf7:
+-------------------------------------------------------------------------------
+Dauer von Durchlauf 7: 57.780099809 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 7 ist 405.21251499
+
+Test running...
+Durchlauf8:
+-------------------------------------------------------------------------------
+Dauer von Durchlauf 8: 56.221436479 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 8 ist 461.433951469
+
+Test running...
+Durchlauf9:
+-------------------------------------------------------------------------------
+Dauer von Durchlauf 9: 53.354670006 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 9 ist 514.788621475
+
+Test running...
+Durchlauf10:
+-------------------------------------------------------------------------------
+Dauer von Durchlauf 10: 54.186764309 seconds
+-------------------------------------------------------------------------------
+Overall Duration nach Durchlauf 10 ist 568.975385784
+
+-------------------------------------------------------------------------------
+Average Duration von LongestWordParallelizedReduce  mit 2 Core(s) ist: 56.897538578399995 seconds
+-------------------------------------------------------------------------------
