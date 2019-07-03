@@ -4,75 +4,65 @@ WARNING: Please consider reporting this to the maintainers of org.apache.spark.u
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
 Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
-19/06/24 02:05:39 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/06/24 01:17:41 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Test running...
+Overall Duration nach Durchlauf 0 ist 105.94334159
 Durchlauf 1:
 -------------------------------------------------------------------------------
-class longestWord.LongestWordParallelized: 61.611742977 seconds
+class longestWord.LongestWordParallelized: 105.94334159 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 1 ist 61.611742977
-
+Test running...
+Overall Duration nach Durchlauf 1 ist 203.473379001
+Durchlauf 1:
+-------------------------------------------------------------------------------
+class longestWord.LongestWordParallelized: 97.530037411 seconds
+-------------------------------------------------------------------------------
 Test running...
 Durchlauf 2:
 -------------------------------------------------------------------------------
-class longestWord.LongestWordParallelized: 50.919032488 seconds
+class longestWord.LongestWordParallelized: 99.115360697 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 2 ist 112.530775465
-
 Test running...
+Overall Duration nach Durchlauf 3 ist 408.231260238
 Durchlauf 3:
 -------------------------------------------------------------------------------
-class longestWord.LongestWordParallelized: 51.788299105 seconds
+class longestWord.LongestWordParallelized: 105.64252054 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 3 ist 164.31907457
-
 Test running...
+Overall Duration nach Durchlauf 4 ist 517.214216435
 Durchlauf 4:
 -------------------------------------------------------------------------------
-class longestWord.LongestWordParallelized: 50.210050773 seconds
+class longestWord.LongestWordParallelized: 108.982956197 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 4 ist 214.529125343
-
 Test running...
+Overall Duration nach Durchlauf 5 ist 629.460525586
 Durchlauf 5:
 -------------------------------------------------------------------------------
-class longestWord.LongestWordParallelized: 50.189117028 seconds
+class longestWord.LongestWordParallelized: 112.246309151 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 5 ist 264.718242371
-
 Test running...
+Overall Duration nach Durchlauf 6 ist 727.893032676
 Durchlauf 6:
 -------------------------------------------------------------------------------
-class longestWord.LongestWordParallelized: 52.787358577 seconds
+class longestWord.LongestWordParallelized: 98.43250709 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 6 ist 317.505600948
-
 Test running...
+
 Durchlauf 7:
 -------------------------------------------------------------------------------
-class longestWord.LongestWordParallelized: 50.026426222 seconds
+class longestWord.LongestWordParallelized: 98.586340325 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 7 ist 367.53202717
-
 Test running...
+Overall Duration nach Durchlauf 8 ist 923.144970066
 Durchlauf 8:
 -------------------------------------------------------------------------------
-class longestWord.LongestWordParallelized: 51.556186047 seconds
+class longestWord.LongestWordParallelized: 96.665597065 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 8 ist 419.088213217
-
 Test running...
+
+Overall Duration nach Durchlauf 9 ist 1020.797063837
 Durchlauf 9:
 -------------------------------------------------------------------------------
-class longestWord.LongestWordParallelized: 49.360457332 seconds
+class longestWord.LongestWordParallelized: 97.652093771 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 9 ist 468.448670549
-
-Test running...
-Durchlauf 10:
--------------------------------------------------------------------------------
-class longestWord.LongestWordParallelized: 52.421240349 seconds
--------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 10 ist 520.869910898
-
-Average Duration is 52.086991089799994
+Average Duration is 102.079706383
