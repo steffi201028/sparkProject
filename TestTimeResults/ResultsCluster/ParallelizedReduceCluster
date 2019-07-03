@@ -1,80 +1,73 @@
-WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/C:/Users/Stephanie/.m2/repository/org/apache/spark/spark-unsafe_2.12/2.4.2/spark-unsafe_2.12-2.4.2.jar) to method java.nio.Bits.unaligned()
-WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
-WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-WARNING: All illegal access operations will be denied in a future release
-Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
-19/07/03 20:23:40 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Test running...
 Durchlauf 1:
 -------------------------------------------------------------------------------
-Dauer von Durchlauf 1: 69.020849808 seconds
+Dauer von Durchlauf 1: 67.234436822 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 1 ist 69.020849808
+Overall Duration nach Durchlauf 1 ist 67.234436822
 
 Test running...
 Durchlauf 2:
 -------------------------------------------------------------------------------
-Dauer von Durchlauf 2: 67.540355768 seconds
+Dauer von Durchlauf 2: 44.895267633 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 2 ist 136.561205576
+Overall Duration nach Durchlauf 2 ist 112.129704455
 
 Test running...
 Durchlauf 3:
 -------------------------------------------------------------------------------
-Dauer von Durchlauf 3: 67.403658922 seconds
+Dauer von Durchlauf 3: 42.811147143 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 3 ist 203.964864498
+Overall Duration nach Durchlauf 3 ist 154.940851598
 
 Test running...
 Durchlauf 4:
 -------------------------------------------------------------------------------
-Dauer von Durchlauf 4: 104.101888384 seconds
+Dauer von Durchlauf 4: 41.581944349 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 4 ist 308.066752882
+Overall Duration nach Durchlauf 4 ist 196.522795947
 
 Test running...
 Durchlauf 5:
 -------------------------------------------------------------------------------
-Dauer von Durchlauf 5: 86.518746912 seconds
+Dauer von Durchlauf 5: 40.32784691 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 5 ist 394.585499794
+Overall Duration nach Durchlauf 5 ist 236.850642857
 
 Test running...
 Durchlauf 6:
 -------------------------------------------------------------------------------
-Dauer von Durchlauf 6: 70.049865336 seconds
+Dauer von Durchlauf 6: 41.268499767 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 6 ist 464.63536513
+Overall Duration nach Durchlauf 6 ist 278.119142624
 
 Test running...
 Durchlauf 7:
 -------------------------------------------------------------------------------
-Dauer von Durchlauf 7: 67.048859491 seconds
+Dauer von Durchlauf 7: 40.844467367 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 7 ist 531.684224621
+Overall Duration nach Durchlauf 7 ist 318.963609991
 
 Test running...
 Durchlauf 8:
 -------------------------------------------------------------------------------
-Dauer von Durchlauf 8: 67.213953709 seconds
+Dauer von Durchlauf 8: 39.488791321 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 8 ist 598.89817833
+Overall Duration nach Durchlauf 8 ist 358.452401312
 
 Test running...
 Durchlauf 9:
 -------------------------------------------------------------------------------
-Dauer von Durchlauf 9: 67.637770105 seconds
+Dauer von Durchlauf 9: 40.997891272 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 9 ist 666.535948435
+Overall Duration nach Durchlauf 9 ist 399.450292584
 
 Test running...
 Durchlauf 10:
 -------------------------------------------------------------------------------
-Dauer von Durchlauf 10: 67.011945567 seconds
+Dauer von Durchlauf 10: 40.130030096 seconds
 -------------------------------------------------------------------------------
-Overall Duration nach Durchlauf 10 ist 733.547894002
+Overall Duration nach Durchlauf 10 ist 439.58032268
 
 -------------------------------------------------------------------------------
-Average Duration von LongestWordParallelizedReduce ist: 73.3547894002 seconds
+Average Duration von LongestWordParallelizedReduce ist: 43.958032268 seconds
 -------------------------------------------------------------------------------
